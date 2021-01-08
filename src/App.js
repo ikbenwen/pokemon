@@ -5,7 +5,27 @@ import PokemonCard from "./components/pokemonCard";
 import 'tachyons';
 
 function App() {
-const[pokemons, setPokemons] = useState(null)
+const[pokemons, setPokemons] = useState(null);
+
+useEffect(() => {
+    async function getPokemons() {
+        try{
+          const response = await axios.get(
+              `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
+          );
+          setPokemons(response.data.results);
+            console.log("dit krijgen we uit de response", response.data.results);
+
+        } catch (error) {
+
+            alert("pokemon has fled");
+        }
+
+    }
+    getPokemons();
+    console.log('effect')
+}, [])
+
     return (
         <>
         <PokemonCard name="pikachu"/>
