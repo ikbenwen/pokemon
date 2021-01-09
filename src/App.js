@@ -30,6 +30,8 @@ useEffect(() => {
 
     return (
         <>
+            <button onClick={() => setPagina(pagina +20)}>volgende</button>
+            <button onClick={() => setPagina(pagina -20)}>vorige</button>
             {pokemons &&
             pokemons.map((pokemon) => {
                 return <PokemonCard key={pokemon.name} name={pokemon.name} />;
