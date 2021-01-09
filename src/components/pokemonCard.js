@@ -24,16 +24,16 @@ export default function PokemonCard(props) {
 
 
     return (
-        <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5pokemon-Card-Container'>
+        <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 fl w-20 h-100 shadow-5 pokemon-Card-Container'>
             <div className="pokemon-card">
                 {/*<h1>Pokémon</h1>*/}
                 <p>{pokemonData?.name}</p>
                 <img src={pokemonData?.sprites.front_default} alt={pokemonData?.name} />
                 <p>moves: {pokemonData?.moves.length+1}</p>
                 <p>weight: {pokemonData?.weight} kg</p>
-                <p id="abilities">Abilities:
+                <div id="abilities">Abilities:
                     <ul>{pokemonData?.abilities.map((prop)=> {return<li key={prop.slot}>{prop.ability.name}</li>})}</ul>
-                </p>
+                </div>
             </div>
         </div>
     )

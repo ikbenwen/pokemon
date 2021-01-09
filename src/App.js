@@ -6,6 +6,8 @@ import 'tachyons';
 
 function App() {
 const[pokemons, setPokemons] = useState(null);
+const [pagina, setPagina] = useState(0);
+
 
 useEffect(() => {
     async function getPokemons() {
@@ -14,7 +16,7 @@ useEffect(() => {
               `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
           );
           setPokemons(response.data.results);
-            console.log("dit krijgen we uit de response", response.data.results);
+            // console.log("dit krijgen we uit de response", response.data.results);
 
         } catch (error) {
 
@@ -23,15 +25,18 @@ useEffect(() => {
 
     }
     getPokemons();
-    console.log('effect')
+    // console.log('effect')
 }, [])
 
     return (
         <>
-        <PokemonCard name="pikachu"/>
-        <PokemonCard name="jigglypuff"/>
+            {pokemons &&
+            pokemons.map((pokemon) => {
+                return <PokemonCard key={pokemon.name} name={pokemon.name} />;
+            })}
+
         </>
-        )
+        );
 
 }
 export default App;
