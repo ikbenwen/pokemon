@@ -13,7 +13,7 @@ useEffect(() => {
     async function getPokemons() {
         try{
           const response = await axios.get(
-              `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
+              `https://pokeapi.co/api/v2/pokemon/?offset=${pagina}&limit=20`
           );
           setPokemons(response.data.results);
             // console.log("dit krijgen we uit de response", response.data.results);
@@ -25,8 +25,8 @@ useEffect(() => {
 
     }
     getPokemons();
-    // console.log('effect')
-}, [])
+   // dependency array
+}, [pagina])
 
     return (
         <>
