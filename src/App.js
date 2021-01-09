@@ -39,13 +39,13 @@ useEffect(() => {
         return (
         <>
             <button
-                className="f6 link dim ph3 pv2 mb2 dib white bg-hot-pink"
+                className="navigation"
                 disabled={pagina === 0} onClick={() => setPagina(pagina -20)}>
                 vorige
             </button>
 
             <button
-                className="f6 link dim ph3 pv2 mb2 dib white bg-hot-pink" 
+                className="navigation"
                 disabled={pagina === 1100} onClick={() => setPagina(pagina +20)}>
                 volgende
             </button>
@@ -53,7 +53,6 @@ useEffect(() => {
             pokemons.map((pokemon) => {
                 return <PokemonCard key={pokemon.name} name={pokemon.name} />;
             })}
-
         </>
         );
 
