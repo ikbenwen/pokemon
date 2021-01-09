@@ -6,6 +6,7 @@ import 'tachyons';
 
 function App() {
 const[pokemons, setPokemons] = useState(null);
+const [status, setStatus] = useState("loading");
 const [pagina, setPagina] = useState(0);
 
 
@@ -16,22 +17,38 @@ useEffect(() => {
               `https://pokeapi.co/api/v2/pokemon/?offset=${pagina}&limit=20`
           );
           setPokemons(response.data.results);
-            // console.log("dit krijgen we uit de response", response.data.results);
+          setStatus("done loading");
 
         } catch (error) {
+            setStatus("error");
 
-            alert("pokemon has fled");
         }
-
     }
+
+
     getPokemons();
    // dependency array
 }, [pagina])
 
-    return (
+
+    if (status === "loading") {
+        return <h1>Loading</h1>;
+    } else if (status === "error") {
+    return alert("pokemon has fled");
+    } else {
+        return (
         <>
-            <button className="f6 link dim ph3 pv2 mb2 dib white bg-hot-pink" href="#0"  onClick={() => setPagina(pagina +20)}>volgende</button>
-            <button className="f6 link dim ph3 pv2 mb2 dib white bg-hot-pink" href="#0" disabled={pagina === 0} onClick={() => setPagina(pagina -20)}>vorige</button>
+            <button
+                className="f6 link dim ph3 pv2 mb2 dib white bg-hot-pink" href="#0"
+                disabled={pagina === 0} onClick={() => setPagina(pagina -20)}>
+                vorige
+            </button>
+
+            <button
+                className="f6 link dim ph3 pv2 mb2 dib white bg-hot-pink" href="#0"
+                disabled={pagina === 1100} onClick={() => setPagina(pagina +20)}>
+                volgende
+            </button>
             {pokemons &&
             pokemons.map((pokemon) => {
                 return <PokemonCard key={pokemon.name} name={pokemon.name} />;
@@ -40,5 +57,5 @@ useEffect(() => {
         </>
         );
 
-}
+}}
 export default App;

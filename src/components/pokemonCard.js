@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 // import './App.css';
 import axios from 'axios';
+import Pokemon from "./Pokemon";
 import 'tachyons';
 
 
@@ -13,7 +14,6 @@ export default function PokemonCard(props) {
                 const result = await axios.get(
                     `https://pokeapi.co/api/v2/pokemon/${props.name}`
                 );
-                console.log(result.data);
                 setPokemonData(result.data);
             } catch (e) {
                 console.error(e);
@@ -34,6 +34,7 @@ export default function PokemonCard(props) {
                 <div id="abilities">Abilities:
                     <ul>{pokemonData?.abilities.map((prop)=> {return<li key={prop.slot}>{prop.ability.name}</li>})}</ul>
                 </div>
+                {pokemonData && <Pokemon pokemon={pokemonData} />}
             </div>
         </div>
     )
