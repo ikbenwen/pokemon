@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Pokemon from "./Pokemon";
 import 'tachyons';
+import './pokemonCard.css'
 
 
 export default function PokemonCard(props) {
@@ -24,7 +25,7 @@ export default function PokemonCard(props) {
 
 
     return (
-        <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 fl w-20 h-100 shadow-5 pokemon-Card-Container'>
+        <div className='pokemon-Card-Container'>
             <div className="pokemon-card">
                 {/*<h1>Pokémon</h1>*/}
                 <p>{pokemonData?.name}</p>
