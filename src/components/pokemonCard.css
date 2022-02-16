@@ -1,17 +1,13 @@
 .pokemon-Card-Container {
+    width: 100%;
     display: flex;
-    grid-gap: 20px;
-
-    grid-template-columns: 200px;
-    grid-template-rows: 600px;
-    margin: 20px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
+    flex-direction: row;
+    flex-flow: column wrap;
 }
 .pokemon-card {
-    width: 300px;
+    width: 20% ;
+    margin: 0 2% 2% 2%;
+    padding: 10px;
     cursor:pointer;
     text-align: center;
     font-size:10em;
